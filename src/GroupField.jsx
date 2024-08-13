@@ -114,6 +114,7 @@ function GroupField({ groups, setGroups, groupsDataSource }) {
     {
       title: "Name",
       dataIndex: "memberName",
+      width: '20%',
       onCell: sharedOnCell,
       editable: false,
     },
@@ -124,6 +125,7 @@ function GroupField({ groups, setGroups, groupsDataSource }) {
           title: "Note",
           key: "note",
           dataIndex: "note",
+          width: '40%',
           editable: true,
           onCell: (record) => ({
             title: "Note",
@@ -137,6 +139,7 @@ function GroupField({ groups, setGroups, groupsDataSource }) {
           title: "Price",
           dataIndex: "price",
           key: "price",
+          width: '20%',
           editable: true,
           onCell: (record) => ({
             inputType: "number",
@@ -150,6 +153,7 @@ function GroupField({ groups, setGroups, groupsDataSource }) {
         {
           title: "Action",
           key: "action",
+          width: '20%',
           render: (_, record) => {
             const editable = isEditing(record);
             return editable ? (
@@ -177,7 +181,7 @@ function GroupField({ groups, setGroups, groupsDataSource }) {
                 />
                 <Button
                   type="text"
-                  icon={<DeleteTwoTone />}
+                  icon={<DeleteTwoTone twoToneColor="#ff4d4f" />}
                   onClick={() => handleDelete(record)}
                 />
               </span>

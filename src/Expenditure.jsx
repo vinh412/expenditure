@@ -3,8 +3,9 @@ import React from "react";
 import GroupField from "./GroupField";
 import MemberList from "./MemberList";
 import CreateGroup from "./CreateGroup";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import Calculate from "./Calculate";
+import { Tabs } from "antd";
 
 function Expenditure() {
   const [members, setMembers] = React.useState([
@@ -76,12 +77,36 @@ function Expenditure() {
     };
   });
   return (
-    <div>
-      {/* <MemberList members={members} /> */}
-      <CreateGroup members={members} groups={groups} setGroups={setGroups} />
-      <GroupField groups={groups} setGroups={setGroups} groupsDataSource={groupsDataSource}/>
-      <Calculate groups={groups} members={members} />
-    </div>
+    <Tabs
+      defaultActiveKey="1"
+      centered
+      items={[
+        {
+          label: "Members",
+          key: "1",
+          children: <MemberList members={members} setMembers={setMembers} />
+        },
+        {
+          label: "Groups",
+          key: "2",
+          children: (
+            <div>
+              <CreateGroup
+                members={members}
+                groups={groups}
+                setGroups={setGroups}
+              />
+              <GroupField
+                groups={groups}
+                setGroups={setGroups}
+                groupsDataSource={groupsDataSource}
+              />
+              <Calculate groups={groups} members={members} />
+            </div>
+          ),
+        },
+      ]}
+    />
   );
 }
 
